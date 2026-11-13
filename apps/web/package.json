@@ -20,6 +20,6 @@
     "leaflet-draw": "^1.0.4"
   },
   "engines": {
-    "node": "20.x"
+    "node": "26.x"
   }
 }
