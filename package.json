@@ -1,0 +1,19 @@
+{
+  "name": "sistemaia",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema de documentación del patrimonio gastronómico tradicional de Ciudad Juárez",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/api & npm run dev --workspace=apps/web",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
