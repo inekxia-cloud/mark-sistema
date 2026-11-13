@@ -1,11 +1,21 @@
 :root {
-  --bg: #faf6f0;
+  /* Paleta "Color Serve" — Design Seeds */
+  --peach: #FAB693;
+  --coral: #F89F90;
+  --terracotta: #E17864;
+  --olive: #6A7C4F;
+  --amber: #FAB863;
+  --lime: #DBEB94;
+
+  --bg: #FBE7B8;
   --card: #ffffff;
-  --ink: #2b2118;
-  --muted: #7a6a58;
-  --accent: #b4552d;
-  --accent-dark: #8f3f1f;
-  --border: #e8ddd0;
+  --ink: #3D3627;
+  --muted: #6A7C4F;
+  --accent: #E17864;
+  --accent-dark: #BF5A42;
+  --btn: #FAB863;
+  --btn-hover: #E17864;
+  --border: #FAB693;
 }
 
 * { box-sizing: border-box; }
@@ -44,8 +54,8 @@ body {
 .user { color: var(--muted); font-size: 0.9rem; }
 
 .btn, button.btn {
-  background: var(--accent);
-  color: #fff;
+  background: var(--btn);
+  color: var(--ink);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -54,7 +64,7 @@ body {
   text-decoration: none;
   display: inline-block;
 }
-.btn:hover, button.btn:hover { background: var(--accent-dark); }
+.btn:hover, button.btn:hover { background: var(--btn-hover); color: #fff; }
 
 .btn-link {
   background: none;
@@ -91,8 +101,8 @@ body {
   font-size: 0.75rem;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
-  background: #f3e4d7;
-  color: var(--accent-dark);
+  background: var(--lime);
+  color: var(--olive);
   margin-right: 0.4rem;
 }
 .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
@@ -121,7 +131,7 @@ form label { font-size: 0.85rem; color: var(--muted); display: block; margin-bot
   color: var(--ink);
   border: 1px solid var(--border);
 }
-.btn-google:hover { background: #f7f3ee; }
+.btn-google:hover { background: var(--peach); }
 
 .divider {
   text-align: center;

@@ -7,7 +7,7 @@
 
   // Centro: Ciudad Juárez
   const CENTER = [31.6907, -106.4344];
-  const DEFAULT_COLOR = '#b4552d';
+  const DEFAULT_COLOR = '#F89F90';
 
   let user = null;
   let items = [];
@@ -231,8 +231,8 @@
         const { latitude, longitude, accuracy } = pos.coords;
         L.circle([latitude, longitude], {
           radius: accuracy || 50,
-          color: '#3a6ea5',
-          fillColor: '#3a6ea5',
+          color: '#6A7C4F',
+          fillColor: '#6A7C4F',
           fillOpacity: 0.12,
           weight: 1,
         }).addTo(map);
@@ -240,7 +240,7 @@
           radius: 7,
           color: '#fff',
           weight: 2,
-          fillColor: '#3a6ea5',
+          fillColor: '#6A7C4F',
           fillOpacity: 1,
         })
           .addTo(map)
