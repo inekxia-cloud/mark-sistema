@@ -1,7 +1,8 @@
 // Cliente HTTP para la API del backend.
-// La URL se configura con PUBLIC_API_URL (ver .env.example).
+// En Vercel Services usa /api-proxy, que reenvía por binding interno a api.
+// En desarrollo local se puede configurar PUBLIC_API_URL (ver .env.example).
 
-const BASE = (import.meta.env.PUBLIC_API_URL || 'http://localhost:4000/api').replace(/\/$/, '');
+const BASE = (import.meta.env.PUBLIC_API_URL || '/api-proxy').replace(/\/$/, '');
 
 export function getToken() {
   return typeof localStorage !== 'undefined' ? localStorage.getItem('sistemaia_token') : null;

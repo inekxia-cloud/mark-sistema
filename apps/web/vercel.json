@@ -1,7 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "sveltekit",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "outputDirectory": ".svelte-kit/output"
+  "framework": "sveltekit-1"
 }

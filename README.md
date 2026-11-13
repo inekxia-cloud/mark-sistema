@@ -8,8 +8,8 @@ Cuauhtémoc y corredores de fondas típicas).
 
 ```
 apps/
-  web/    Frontend SvelteKit (Svelte 5) — se despliega en Vercel
-  api/    Backend Express (Node.js) + Supabase — se despliega en Vercel como serverless
+  web/    Frontend SvelteKit — servicio público en Vercel Services
+  api/    Backend Express (Node.js) + Supabase — servicio público en /api
 supabase/
   schema.sql   Esquema de base de datos + RLS
 ```
@@ -53,20 +53,20 @@ supabase/
 
 ## Despliegue en Vercel (monorepo)
 
-Crea **dos proyectos** en Vercel apuntando al mismo repo:
-
-| Proyecto | Root Directory | Notas |
-|---|---|---|
-| `sistemaia-web` | `apps/web` | Framework: SvelteKit. Env: `PUBLIC_API_URL` |
-| `sistemaia-api` | `apps/api` | Functions en `api/index.js`. Env: todas las de `apps/api/.env` |
+Crea **un proyecto** en Vercel apuntando a la raíz del repo. `vercel.json` define
+dos servicios: `web` (`apps/web`) recibe todo el tráfico y `api` (`apps/api`)
+recibe `/api/*`. El frontend llama a `/api-proxy/*`, que reenvía al servicio
+`api` mediante el binding interno `API_INTERNAL_URL`.
 
 Pasos:
 
-1. Despliega primero `sistemaia-api` y copia su URL (ej. `https://sistemaia-api.vercel.app`).
-2. En `sistemaia-api` → Settings → Environment Variables, define las variables de `apps/api/.env`.
-3. Despliega `sistemaia-web` con `PUBLIC_API_URL=https://sistemaia-api.vercel.app/api`.
-4. En `sistemaia-api`, actualiza `CLIENT_URL` a la URL del frontend para CORS.
-5. Redeploy del API.
+1. Importa el repo en Vercel con Root Directory en la raíz (`/`).
+2. En Settings → Environment Variables, define las variables de `apps/api/.env`.
+3. Para CORS local define `CLIENT_URL=http://localhost:5173`; en producción usa
+   el dominio del proyecto o el dominio del preview correspondiente.
+4. No definas `PUBLIC_API_URL` en producción: el frontend usa `/api-proxy`,
+   que llama al servicio `api` por binding interno. Para desarrollo local de
+   `apps/web`, usa `PUBLIC_API_URL=http://localhost:4000/api`.
 
 > Nota: el rate limiter usa memoria por instancia; en serverless el contador se
 > reinicia por instancia. Para límites estrictos globales se puede respaldar
